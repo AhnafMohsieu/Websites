@@ -98,7 +98,24 @@ The source installs live in Local by Flywheel. To re-capture one:
    node tools/inject-note.js --dir ../cafe-neptune --root ..
    ```
 
-7. Verify twice. `tools/verify-mirror.js` walks every local reference on disk.
+7. Find dead links with `tools/linkcheck.js`, then repair them with
+   `tools/fix-links.js`. Not every URL a theme prints corresponds to a page: a
+   footer can name a policy page that was never published, and a menu can point
+   at a category slug that does not exist. The crawl cannot follow those, so
+   they are dangling anchors unless something removes them.
+
+   ```bash
+   node tools/linkcheck.js ..
+   node tools/fix-links.js --dir .. --map product-category/fresh-seafood=product-category/fresh-frozen-fish/ --write
+   node tools/linkcheck.js ..
+   ```
+
+   `fix-links.js` drops a list item whose only content is a dead link, rewrites
+   the anchors named in `--map` to a real target, and strips the `href` from any
+   other dead anchor so the label stays but goes nowhere. Run it without
+   `--write` first: it reports what it would touch.
+
+8. Verify twice. `tools/verify-mirror.js` walks every local reference on disk.
    `tools/verify-live.js` then checks the published copy: every page returns 200,
    every asset named inside a stylesheet resolves, and every page carries the
    banner wiring.
