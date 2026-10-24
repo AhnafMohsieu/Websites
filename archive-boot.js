@@ -83,6 +83,15 @@
   }
 
   /*
+   * Contact Form 7 fetches its form schema from wp-json and throws the failed
+   * Response object when the host answers 404. Nothing can consume that error
+   * here — the form is blocked at submit — so keep it out of the console.
+   */
+  window.addEventListener("unhandledrejection", function (event) {
+    if (typeof Response !== "undefined" && event.reason instanceof Response) event.preventDefault();
+  });
+
+  /*
    * The wishlist plugin caches its state in localStorage under a key it builds
    * from the site hash. With no cache it falls back to a timer that calls its
    * render function with `undefined` and throws. Seed an empty record as soon
