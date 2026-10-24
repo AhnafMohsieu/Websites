@@ -71,16 +71,24 @@ renameEncoded(ROOT);
 
 /* 2. strip machine-only links ------------------------------------------- */
 
-const MACHINE = /<link\b[^>]*(wp-json|xmlrpc\.php|\/feed\/|api\.w\.org)[^>]*>\s*/gi;
+const MACHINE = /<link\b[^>]*(wp-json|xmlrpc\.php|feed\/|api\.w\.org|rel=["']alternate["'])[^>]*>\s*/gi;
+// Anchors to RSS feeds, login, and XML-RPC have no static equivalent; keep the
+// visible text and drop the dead link.
+const DEAD_ANCHOR = /<a\b[^>]*href=["'][^"']*(?:\/feed\/|wp-login\.php|xmlrpc\.php)[^"']*["'][^>]*>([\s\S]*?)<\/a>/gi;
 
 let stripped = 0;
 for (const file of walk(ROOT)) {
   if (!file.endsWith(".html")) continue;
   const html = fs.readFileSync(file, "utf8");
-  const next = html.replace(MACHINE, () => {
-    stripped++;
-    return "";
-  });
+  const next = html
+    .replace(MACHINE, () => {
+      stripped++;
+      return "";
+    })
+    .replace(DEAD_ANCHOR, (m, inner) => {
+      stripped++;
+      return inner;
+    });
   if (next !== html) fs.writeFileSync(file, next);
 }
 

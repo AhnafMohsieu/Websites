@@ -32,7 +32,7 @@
   <section class="hero shell" id="top" aria-labelledby="hero-title">
     <p class="eyebrow">Case studies · WordPress · WooCommerce</p>
     <h1 id="hero-title">Three storefronts for Bangladeshi retail</h1>
-    <p class="lede">Seafood, general retail, and a cafe takeaway counter. Each is built on WordPress with the payment methods local customers actually use: bKash, Nagad, cards, and cash on delivery. All three can be browsed right here — every page, product, and photograph was captured from the working installs.</p>
+    <p class="lede">Seafood, general retail, and a cafe takeaway counter. Each is built on WordPress with the payment methods local customers actually use: bKash, Nagad, cards, and cash on delivery. All three can be browsed right here — every page, product, and asset was captured from the working installs.</p>
     <p class="hero__hint">Open a build and click around. The archives are static captures, so the cart and checkout are inert; everything else behaves like the original site.</p>
   </section>
 
@@ -48,8 +48,9 @@
       <p class="site__desc">A seafood shop built around freshness and trust: product catalogue with weight and cut options, cart and checkout tuned for mobile, and delivery-area logic for Dhaka. Payment includes the Bangladeshi wallets plus cash on delivery, because a large share of customers will not prepay for perishable food.</p>
       <dl class="facts">
         <div><dt>Built with</dt><dd>WordPress, WooCommerce, custom theme work</dd></div>
+        <div><dt>Catalogue</dt><dd>22 products across 6 categories</dd></div>
         <div><dt>Payments</dt><dd>bKash, Nagad, card, cash on delivery</dd></div>
-        <div><dt>Focus</dt><dd>Mobile-first catalogue and checkout</dd></div>
+        <div><dt>Archive</dt><dd>45 pages · 63 MB captured</dd></div>
       </dl>
       <p class="site__actions"><a class="btn btn--solid" href="nori/">Open the NoriBD archive</a></p>
     </article>
@@ -60,8 +61,9 @@
       <p class="site__desc">A general retailer spanning gadgets, fashion, groceries, books and stationery, home essentials, and fresh seafood in one storefront. The work was mostly information architecture: category structure that stays navigable as the catalogue widens, shared product templates across unrelated departments, and checkout that does not ask a grocery buyer to fill in a form designed for electronics.</p>
       <dl class="facts">
         <div><dt>Built with</dt><dd>WordPress, WooCommerce, multi-category taxonomy</dd></div>
-        <div><dt>Departments</dt><dd>Six, including fresh seafood</dd></div>
-        <div><dt>Focus</dt><dd>Catalogue structure and checkout flow</dd></div>
+        <div><dt>Catalogue</dt><dd>60 products across six departments</dd></div>
+        <div><dt>Departments</dt><dd>Gadgets, fashion, groceries, books, home, seafood</dd></div>
+        <div><dt>Archive</dt><dd>78 pages · 13 MB captured</dd></div>
       </dl>
       <p class="site__actions"><a class="btn btn--solid" href="bangubhozon/">Open the Bangu Bhozon archive</a></p>
     </article>
@@ -72,8 +74,9 @@
       <p class="site__desc">A takeaway counter for a cafe: a short menu that changes often, quick add-to-cart for repeat customers, and an order flow that assumes the customer is standing in the shop rather than browsing at a desk. Kept deliberately small — the menu is the product, and anything that slows ordering costs sales.</p>
       <dl class="facts">
         <div><dt>Built with</dt><dd>WordPress, WooCommerce</dd></div>
-        <div><dt>Model</dt><dd>Takeaway ordering</dd></div>
-        <div><dt>Focus</dt><dd>Speed of ordering</dd></div>
+        <div><dt>Catalogue</dt><dd>55 products across 5 categories</dd></div>
+        <div><dt>Model</dt><dd>Takeaway ordering, mobile-first</dd></div>
+        <div><dt>Archive</dt><dd>81 pages · 16 MB captured</dd></div>
       </dl>
       <p class="site__actions"><a class="btn btn--solid" href="cafe-neptune/">Open the Cafe Neptune archive</a></p>
     </article>
@@ -86,8 +89,8 @@
     </div>
     <div class="notice">
       <p><strong>They are static captures of running WordPress installs.</strong> I restarted each site locally against its own database, crawled every page — homepage, shop, all product pages, categories, about and contact — and saved the rendered HTML with its images, stylesheets, and scripts. The originals were built on Pantheon staging hosts that have since been deleted.</p>
-      <p><strong>What works:</strong> navigation, category browsing, product pages, galleries, search-free browsing of the whole catalogue, and every layout at every screen size.</p>
-      <p><strong>What cannot work:</strong> anything that needs PHP or a database — adding to cart, checkout, payment callbacks, account pages, and the contact form. GitHub Pages serves files and does not execute WordPress. These captures exist so the work can be seen, not so it can take an order.</p>
+      <p><strong>What works:</strong> navigation, category browsing, product pages, galleries where the original had them, and every layout at every screen size. Links inside a capture are rewritten to relative paths, so the archive works from any host, not just this one.</p>
+      <p><strong>What cannot work:</strong> anything that needs PHP or a database — adding to cart, checkout, payment callbacks, account pages, and the contact form. GitHub Pages serves files and does not execute WordPress. A click on a cart button says so instead of failing silently. These captures exist so the work can be seen, not so it can take an order.</p>
       <p>The full build of each site survives as an All-in-One WP Migration archive with its database, theme, plugins, and media. <a href="IMPORT.md">IMPORT.md</a> documents restoring one onto any PHP host in about fifteen minutes; that is the path to a shop that actually takes orders.</p>
     </div>
   </section>

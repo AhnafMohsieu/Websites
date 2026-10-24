@@ -245,7 +245,7 @@ async function drainAssets() {
               const ref = m[2];
               if (/^(data:|#)/i.test(ref)) continue;
               const resolved = new URL(ref, "http://mirror.invalid" + urlPath);
-              if (isLocalHost(resolved.host)) queueAsset(resolved.pathname);
+              if (resolved.host === "mirror.invalid" || isLocalHost(resolved.host)) queueAsset(resolved.pathname);
             }
             fs.writeFileSync(file, rewriteCss(css, urlPath));
           } else {
