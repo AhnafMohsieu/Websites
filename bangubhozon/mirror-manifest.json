@@ -1,13 +1,29 @@
 {
   "source": "http://127.0.0.1:8082",
   "label": "Bangu Bhozon",
-  "capturedAt": "2026-10-24T09:08:49.658Z",
-  "pages": 78,
-  "assets": 137,
-  "sizeMB": 10.2,
+  "capturedAt": "2026-10-24T10:14:10.378Z",
+  "pages": 93,
+  "assets": 624,
+  "sizeMB": 40.5,
   "unreachable": [
     {
       "urlPath": "/author/bangubhozon/",
+      "error": "status 404 text/html; charset=UTF-8"
+    },
+    {
+      "urlPath": "/emi-info",
+      "error": "status 404 text/html; charset=UTF-8"
+    },
+    {
+      "urlPath": "/delivery-returns",
+      "error": "status 404 text/html; charset=UTF-8"
+    },
+    {
+      "urlPath": "/warranty-policy",
+      "error": "status 404 text/html; charset=UTF-8"
+    },
+    {
+      "urlPath": "/product-category/fresh-seafood",
       "error": "status 404 text/html; charset=UTF-8"
     }
   ]
