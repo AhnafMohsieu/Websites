@@ -29,6 +29,17 @@ only exist behind PHP (filtered pagination, account actions, `wp-json`, XML-RPC
 and RSS feeds) are not captured, and their links are removed rather than left
 dangling; anything else that misses lands on `404.html`.
 
+Two small scripts make the captures behave on a static host:
+
+- `archive-boot.js` loads synchronously in `<head>`. WooCommerce and the wishlist
+  plugin poll for cart fragments and wishlist state while the page is still
+  parsing; here those polls are answered locally with an empty payload, which
+  removes two failed requests per page and stops the wishlist script from
+  throwing on a response it never got.
+- `archive-note.js` loads at the end of `<body>`: it guards cart, checkout,
+  wishlist, contact and account forms, rebases any root-relative asset URL a
+  plugin injects after load, and keeps the banner dismissal in `localStorage`.
+
 ## Rebuilding an archive
 
 The source installs live in Local by Flywheel. To re-capture one:
@@ -66,8 +77,9 @@ The source installs live in Local by Flywheel. To re-capture one:
    ```
 
 4. Post-process with `tools/polish.js`: strips WordPress machine-only links
-   (`wp-json`, `xmlrpc.php`, feeds), renames percent-encoded files, and re-fetches
-   assets that 404'd.
+   (`wp-json`, `xmlrpc.php`, feeds), renames percent-encoded files, makes
+   root-relative plugin config paths depth-aware (gtranslate's flag base), and
+   re-fetches assets that 404'd.
 
 5. Heal CSS-internal references with `tools/heal-css.js`, then confirm nothing is
    left with `tools/check-css.js`. A crawler that only follows markup misses the
@@ -106,5 +118,7 @@ database, theme, plugins, and media — onto any PHP host.
 
 ## Editing
 
-`index.html` is hand-written; `styles.css` holds the design tokens. No build
-step. Served from `main` / `/ (root)` by GitHub Pages.
+`index.html` is hand-written; `styles.css` holds the design tokens; `shots/`
+holds the hub thumbnails — desktop and mobile renditions of each homepage,
+captured from the archives themselves. No build step. Served from `main` /
+`/ (root)` by GitHub Pages.
