@@ -1,0 +1,14 @@
+{
+  "source": "http://127.0.0.1:8082",
+  "label": "Bangu Bhozon",
+  "capturedAt": "2026-10-24T09:08:49.658Z",
+  "pages": 78,
+  "assets": 137,
+  "sizeMB": 10.2,
+  "unreachable": [
+    {
+      "urlPath": "/author/bangubhozon/",
+      "error": "status 404 text/html; charset=UTF-8"
+    }
+  ]
+}
