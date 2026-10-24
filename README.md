@@ -78,8 +78,9 @@ The source installs live in Local by Flywheel. To re-capture one:
 
 4. Post-process with `tools/polish.js`: strips WordPress machine-only links
    (`wp-json`, `xmlrpc.php`, feeds), renames percent-encoded files, makes
-   root-relative plugin config paths depth-aware (gtranslate's flag base), and
-   re-fetches assets that 404'd.
+   root-relative plugin config paths depth-aware (gtranslate's flag base), gives
+   every page an absolute `og:image` and a canonical URL, and re-fetches assets
+   that 404'd. Pass `--public` if the archive is published somewhere else.
 
 5. Heal CSS-internal references with `tools/heal-css.js`, then confirm nothing is
    left with `tools/check-css.js`. A crawler that only follows markup misses the

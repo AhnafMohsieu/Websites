@@ -127,7 +127,57 @@ for (const file of walk(ROOT)) {
   if (next !== html) fs.writeFileSync(file, next);
 }
 
-/* 4. heal missing assets ------------------------------------------------ */
+/* 4. make social metadata absolute -------------------------------------- */
+
+/*
+ * The crawl rewrote every URL to a relative one, which is right for <img> and
+ * <a> but useless in og:image: a scraper has no page context to resolve it
+ * against. Point the social tags at the published copy, and give every archived
+ * page a canonical URL so it is not read as a stray copy of some other host.
+ */
+const PUBLIC = arg("public", "https://ahnafmohsieu.github.io/Websites").replace(/\/$/, "");
+const OG_IMAGE = /(<meta\s+(?:property|name)=["'](?:og:image|twitter:image)["']\s+content=["'])([^"']+)(["'])/gi;
+
+let socialized = 0;
+let canonicals = 0;
+for (const file of walk(ROOT)) {
+  if (!file.endsWith(".html")) continue;
+  const dir = path.dirname(file);
+
+  // Only archive pages: the hub and 404 sit outside a site folder.
+  let siteRoot = null;
+  for (let d = dir; d.length >= ROOT.length; d = path.dirname(d)) {
+    if (fs.existsSync(path.join(d, "wp-content"))) {
+      siteRoot = d;
+      break;
+    }
+    if (d === ROOT) break;
+  }
+  if (!siteRoot) continue;
+
+  let html = fs.readFileSync(file, "utf8");
+  const before = html;
+
+  html = html.replace(OG_IMAGE, (m, head, value, tail) => {
+    if (/^(https?:)?\/\//i.test(value)) return m;
+    const abs = path.resolve(dir, decode(value));
+    const rel = path.relative(ROOT, abs).split(path.sep).join("/");
+    socialized++;
+    return head + PUBLIC + "/" + rel.split("/").map(encodeURIComponent).join("/") + tail;
+  });
+
+  if (!html.includes('rel="canonical"')) {
+    const rel = path.relative(ROOT, file).split(path.sep).join("/").replace(/index\.html$/, "");
+    const url = PUBLIC + "/" + rel.split("/").map(encodeURIComponent).join("/");
+    const tags = `<link rel="canonical" href="${url}">\n<meta property="og:url" content="${url}">\n`;
+    html = html.replace(/<\/head>/i, (m) => tags + m);
+    canonicals++;
+  }
+
+  if (html !== before) fs.writeFileSync(file, html);
+}
+
+/* 5. heal missing assets ------------------------------------------------ */
 
 const ASSET = /\.(css|js|mjs|jpg|jpeg|png|gif|svg|webp|avif|ico|bmp|woff2?|ttf|otf|eot|pdf|mp4|webm|mp3)$/i;
 const isExternal = (u) => /^(https?:|mailto:|tel:|data:|javascript:|#|\/\/)/i.test(u);
@@ -186,6 +236,6 @@ if (BASE) {
 }
 
 function report() {
-  console.log(JSON.stringify({ dir: ROOT, renamed, strippedLinks: stripped, relativeFlags, missingAssets: missing.size, healed }, null, 2));
+  console.log(JSON.stringify({ dir: ROOT, renamed, strippedLinks: stripped, relativeFlags, socialized, canonicals, missingAssets: missing.size, healed }, null, 2));
   if (missing.size) for (const rel of missing.keys()) console.log("  missing " + rel);
 }
