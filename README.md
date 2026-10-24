@@ -6,7 +6,7 @@ static capture of the running install:
 | Build | Archive | Pages | Catalogue | Weight |
 |---|---|---|---|---|
 | NoriBD — seafood e-commerce | [/nori/](https://ahnafmohsieu.github.io/Websites/nori/) | 45 | 22 products, 6 categories | 63 MB |
-| Bangu Bhozon — multi-category retail | [/bangubhozon/](https://ahnafmohsieu.github.io/Websites/bangubhozon/) | 78 | 60 products, 6 departments | 13 MB |
+| Bangu Bhozon — multi-category retail | [/bangubhozon/](https://ahnafmohsieu.github.io/Websites/bangubhozon/) | 83 | 60 products, 6 departments | 40 MB |
 | Cafe Neptune — takeaway ordering | [/cafe-neptune/](https://ahnafmohsieu.github.io/Websites/cafe-neptune/) | 81 | 55 products, 5 categories | 16 MB |
 
 The landing page is https://ahnafmohsieu.github.io/Websites/.
@@ -47,6 +47,16 @@ The source installs live in Local by Flywheel. To re-capture one:
    define( 'WP_HTTP_BLOCK_EXTERNAL', true );
    define( 'WP_ACCESSIBLE_HOSTS', 'none.invalid' );
    define( 'DISABLE_WP_CRON', true );
+   ```
+
+   Whitelist nothing — not even `127.0.0.1`. The dev server has one worker, and a
+   loopback request to itself never returns, so every page hangs.
+
+   If the store is in WooCommerce's *Coming soon* mode, every URL returns the
+   same holding page and the crawl is worthless. Switch it off first:
+
+   ```sql
+   UPDATE wp_options SET option_value = 'no' WHERE option_name = 'woocommerce_coming_soon';
    ```
 
 3. Crawl with `tools/mirror.js` (zero dependencies):
