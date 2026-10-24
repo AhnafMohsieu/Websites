@@ -4,8 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Websites — Md. Mahin Ahmed</title>
-<meta name="description" content="Three WordPress storefronts built for Bangladeshi retail: NoriBD seafood, Bangu Bhozon multi-category retail, and Cafe Neptune takeaway.">
+<meta name="description" content="Three WordPress storefronts built for Bangladeshi retail — NoriBD seafood, Bangu Bhozon multi-category retail, and Cafe Neptune takeaway. Browse each build as a static archive.">
 <meta name="theme-color" content="#FAF9F6">
+<link rel="icon" href="https://ahnafmohsieu.github.io/Portfolio/assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&display=swap" rel="stylesheet">
@@ -20,7 +21,7 @@
     <nav class="site-nav" aria-label="Primary">
       <ul>
         <li><a href="#sites">Sites</a></li>
-        <li><a href="#status">Status</a></li>
+        <li><a href="#archive">Archives</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -31,7 +32,8 @@
   <section class="hero shell" id="top" aria-labelledby="hero-title">
     <p class="eyebrow">Case studies · WordPress · WooCommerce</p>
     <h1 id="hero-title">Three storefronts for Bangladeshi retail</h1>
-    <p class="lede">Seafood, general retail, and a cafe takeaway counter — each built on WordPress with the payment methods local customers actually use: bKash, Nagad, cards, and cash on delivery.</p>
+    <p class="lede">Seafood, general retail, and a cafe takeaway counter. Each is built on WordPress with the payment methods local customers actually use: bKash, Nagad, cards, and cash on delivery. All three can be browsed right here — every page, product, and photograph was captured from the working installs.</p>
+    <p class="hero__hint">Open a build and click around. The archives are static captures, so the cart and checkout are inert; everything else behaves like the original site.</p>
   </section>
 
   <section class="section shell" id="sites" aria-labelledby="sites-title">
@@ -49,6 +51,7 @@
         <div><dt>Payments</dt><dd>bKash, Nagad, card, cash on delivery</dd></div>
         <div><dt>Focus</dt><dd>Mobile-first catalogue and checkout</dd></div>
       </dl>
+      <p class="site__actions"><a class="btn btn--solid" href="nori/">Open the NoriBD archive</a></p>
     </article>
 
     <article class="site">
@@ -60,6 +63,7 @@
         <div><dt>Departments</dt><dd>Six, including fresh seafood</dd></div>
         <div><dt>Focus</dt><dd>Catalogue structure and checkout flow</dd></div>
       </dl>
+      <p class="site__actions"><a class="btn btn--solid" href="bangubhozon/">Open the Bangu Bhozon archive</a></p>
     </article>
 
     <article class="site">
@@ -71,17 +75,20 @@
         <div><dt>Model</dt><dd>Takeaway ordering</dd></div>
         <div><dt>Focus</dt><dd>Speed of ordering</dd></div>
       </dl>
+      <p class="site__actions"><a class="btn btn--solid" href="cafe-neptune/">Open the Cafe Neptune archive</a></p>
     </article>
   </section>
 
-  <section class="section shell" id="status" aria-labelledby="status-title">
+  <section class="section shell" id="archive" aria-labelledby="archive-title">
     <div class="section-head">
       <span class="section-num">02</span>
-      <h2 id="status-title">Live demo status</h2>
+      <h2 id="archive-title">What these archives are</h2>
     </div>
     <div class="notice">
-      <p><strong>The public demos are offline.</strong> All three sites were developed on Pantheon staging hosts, and those environments have since been deleted — the URLs now return "unknown site". A WordPress storefront needs PHP and MySQL, which static hosting such as GitHub Pages cannot run, so a working copy cannot be published from this repository.</p>
-      <p>What exists is the full build: a complete WordPress export for each site, including the database, theme, plugins, and uploaded media. Restoring one takes about fifteen minutes and is documented step by step in <a href="IMPORT.md">IMPORT.md</a>. The archives run 350–530 MB each and are available on request rather than committed here, because GitHub rejects files above 100 MB.</p>
+      <p><strong>They are static captures of running WordPress installs.</strong> I restarted each site locally against its own database, crawled every page — homepage, shop, all product pages, categories, about and contact — and saved the rendered HTML with its images, stylesheets, and scripts. The originals were built on Pantheon staging hosts that have since been deleted.</p>
+      <p><strong>What works:</strong> navigation, category browsing, product pages, galleries, search-free browsing of the whole catalogue, and every layout at every screen size.</p>
+      <p><strong>What cannot work:</strong> anything that needs PHP or a database — adding to cart, checkout, payment callbacks, account pages, and the contact form. GitHub Pages serves files and does not execute WordPress. These captures exist so the work can be seen, not so it can take an order.</p>
+      <p>The full build of each site survives as an All-in-One WP Migration archive with its database, theme, plugins, and media. <a href="IMPORT.md">IMPORT.md</a> documents restoring one onto any PHP host in about fifteen minutes; that is the path to a shop that actually takes orders.</p>
     </div>
   </section>
 
@@ -89,7 +96,7 @@
     <div class="section-head">
       <span class="section-num">03</span>
       <h2 id="contact-title">Contact</h2>
-      <p class="lede">For a walkthrough of any build, or the export archive itself, get in touch.</p>
+      <p class="lede">For a walkthrough of any build, or the full export archive, get in touch.</p>
     </div>
     <ul class="contact">
       <li><span class="contact__label">Email</span><a href="mailto:mahinahmed923@gmail.com">mahinahmed923@gmail.com</a></li>

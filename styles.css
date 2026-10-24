@@ -47,6 +47,13 @@ a:hover{color:var(--ink)}
 .eyebrow{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 18px}
 .hero h1{font-family:var(--serif);font-size:clamp(2.25rem,6vw,3.75rem);line-height:1.05;letter-spacing:-.02em;margin:0 0 20px;font-weight:600;max-width:22ch}
 .hero .lede{max-width:60ch;font-size:1.1rem;color:var(--muted);margin:0}
+.hero__hint{max-width:56ch;font-size:.88rem;color:var(--muted);border-left:2px solid var(--hairline);padding-left:14px;margin:22px 0 0}
+
+.btn{display:inline-block;padding:11px 20px;border:1px solid var(--ink);border-radius:2px;font-size:.9rem;font-weight:600;
+  text-decoration:none;color:var(--ink);background:transparent;transition:background 120ms ease,color 120ms ease,border-color 120ms ease}
+.btn:hover{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.btn--solid{background:var(--ink);color:var(--paper)}
+.site__actions{margin:18px 0 0}
 
 .section{padding-block:56px;border-top:1px solid var(--hairline)}
 .section-head{margin-bottom:24px}
