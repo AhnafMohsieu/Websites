@@ -25,25 +25,34 @@ const walk = function* (dir) {
 let changed = 0;
 for (const file of walk(DIR)) {
   if (!file.endsWith(".html")) continue;
-  const html = fs.readFileSync(file, "utf8");
-  if (!html.includes('id="mirror-note"') || html.includes("mirror-note__back")) continue;
+  let html = fs.readFileSync(file, "utf8");
+  const original = html;
+  if (!html.includes('id="mirror-note"')) continue;
 
   const relDir = path.relative(DIR, path.dirname(file));
   const depth = relDir === "" || relDir === "." ? 0 : relDir.split(path.sep).length;
   // depth + 1 steps: out of the site folder, into the repo root.
   const prefix = "../".repeat(depth + 1);
 
-  const next = html
-    .replace(
+  // Each edit is guarded on its own marker so the tool can be re-run on pages
+  // captured before a given piece existed.
+  if (!html.includes("mirror-note__back")) {
+    html = html.replace(
       /(<button type="button" aria-label="Dismiss">)/,
       `<a class="mirror-note__back" href="${prefix}" style="color:#FAF9F6;white-space:nowrap;text-decoration:underline;text-underline-offset:2px;font-weight:600">&larr; Case studies</a>\n  $1`
-    )
-    .replace(
-      /<\/body>/,
-      `<script src="${prefix}archive-note.js" defer></script>\n</body>`
     );
-  if (next !== html) {
-    fs.writeFileSync(file, next);
+  }
+  if (!html.includes("archive-boot.js")) {
+    // Synchronous, in <head>: the cart/wishlist poll fires while the page is
+    // still parsing, so a deferred script at the end of <body> is too late.
+    html = html.replace(/<\/head>/, `<script src="${prefix}archive-boot.js"></script>\n</head>`);
+  }
+  if (!html.includes('archive-note.js"')) {
+    html = html.replace(/<\/body>/, `<script src="${prefix}archive-note.js" defer></script>\n</body>`);
+  }
+
+  if (html !== original) {
+    fs.writeFileSync(file, html);
     changed++;
   }
 }

@@ -92,7 +92,42 @@ for (const file of walk(ROOT)) {
   if (next !== html) fs.writeFileSync(file, next);
 }
 
-/* 3. heal missing assets ------------------------------------------------ */
+/* 3. make root-relative plugin configs depth-aware ---------------------- */
+
+/*
+ * gtranslate stores its flags base as an absolute path in a JSON blob
+ * ("flags_location":"\/wp-content\/plugins\/gtranslate\/flags\/"). The widget
+ * assigns that straight to img.src, so under a subfolder mirror the browser
+ * requests it at the domain root, misses, and only then does archive-note.js
+ * patch the element. Rewriting it to a document-relative path up front means
+ * the first request already lands in the archive.
+ */
+const FLAGS_LOCATION = /("flags_location"\s*:\s*")\\\/([^"]*)(")/g;
+
+let relativeFlags = 0;
+for (const file of walk(ROOT)) {
+  if (!file.endsWith(".html")) continue;
+  const html = fs.readFileSync(file, "utf8");
+  if (html.indexOf("flags_location") === -1) continue;
+
+  // The site root is the nearest ancestor that owns wp-content; the flags path
+  // has to climb exactly that many levels to resolve from any page.
+  let depth = 0;
+  for (let dir = path.dirname(file); dir.length >= ROOT.length; dir = path.dirname(dir)) {
+    if (fs.existsSync(path.join(dir, "wp-content"))) break;
+    depth++;
+    if (dir === ROOT) break;
+  }
+  const up = depth ? "../".repeat(depth) : "";
+
+  const next = html.replace(FLAGS_LOCATION, (m, head, rest, tail) => {
+    relativeFlags++;
+    return head + up + rest + tail;
+  });
+  if (next !== html) fs.writeFileSync(file, next);
+}
+
+/* 4. heal missing assets ------------------------------------------------ */
 
 const ASSET = /\.(css|js|mjs|jpg|jpeg|png|gif|svg|webp|avif|ico|bmp|woff2?|ttf|otf|eot|pdf|mp4|webm|mp3)$/i;
 const isExternal = (u) => /^(https?:|mailto:|tel:|data:|javascript:|#|\/\/)/i.test(u);
@@ -110,6 +145,9 @@ for (const file of walk(ROOT)) {
 
   for (const raw of refs) {
     if (!raw || isExternal(raw)) continue;
+    // Root-relative refs only occur in the repo-level 404.html, where "/" is the
+    // published /Websites/ root, not this checkout. Nothing to resolve locally.
+    if (raw.charAt(0) === "/") continue;
     const clean = raw.split(/[?#]/)[0];
     if (!clean) continue;
     const decoded = decode(clean);
@@ -148,5 +186,6 @@ if (BASE) {
 }
 
 function report() {
-  console.log(JSON.stringify({ dir: ROOT, renamed, strippedLinks: stripped, missingAssets: missing.size, healed }, null, 2));
+  console.log(JSON.stringify({ dir: ROOT, renamed, strippedLinks: stripped, relativeFlags, missingAssets: missing.size, healed }, null, 2));
+  if (missing.size) for (const rel of missing.keys()) console.log("  missing " + rel);
 }

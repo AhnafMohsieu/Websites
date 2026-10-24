@@ -39,18 +39,63 @@
     if (slug) siteRoot = repoPath + slug + "/";
   }
 
+  function rebase(value) {
+    if (!siteRoot || !value || value.charAt(0) !== "/" || value.indexOf("//") === 0) return null;
+    if (value.indexOf(repoPath) === 0) return null;
+    return siteRoot + value.slice(1);
+  }
+
+  var ATTRS = ["src", "href", "data-src", "poster"];
+
   function sweep() {
     if (!siteRoot) return;
-    var attrs = ["src", "href", "data-src", "poster"];
     document.querySelectorAll('[src^="/"], [href^="/"], [data-src^="/"], [poster^="/"]').forEach(function (el) {
-      attrs.forEach(function (attr) {
-        var value = el.getAttribute(attr);
-        if (!value || value.charAt(0) !== "/" || value.indexOf("//") === 0) return;
-        if (value.indexOf(repoPath) === 0) return;
-        el.setAttribute(attr, siteRoot + value.slice(1));
+      ATTRS.forEach(function (attr) {
+        var fixed = rebase(el.getAttribute(attr));
+        if (fixed) el.setAttribute(attr, fixed);
       });
     });
   }
+
+  /*
+   * Some widgets build the element and set src in the same tick, so a sweep
+   * after the fact is too late for the first request. Watch for those nodes and
+   * rebase the attribute before the browser commits to the fetch; the error
+   * handler below is the safety net when even that loses the race.
+   */
+  if (siteRoot) {
+    var queued = false;
+    var schedule = function () {
+      if (queued) return;
+      queued = true;
+      setTimeout(function () {
+        queued = false;
+        sweep();
+      }, 0);
+    };
+    if (window.MutationObserver) {
+      new MutationObserver(schedule).observe(document.documentElement, {
+        subtree: true,
+        childList: true,
+        attributes: true,
+        attributeFilter: ATTRS,
+      });
+    }
+    document.addEventListener(
+      "error",
+      function (event) {
+        var el = event.target;
+        if (!el || !el.tagName || el.dataset.archiveRebased) return;
+        if (el.tagName !== "IMG" && el.tagName !== "SOURCE") return;
+        var fixed = rebase(el.getAttribute("src"));
+        if (!fixed) return;
+        el.dataset.archiveRebased = "1";
+        el.setAttribute("src", fixed);
+      },
+      true
+    );
+  }
+
 
   function dismiss() {
     try {
@@ -108,10 +153,19 @@
     "submit",
     function (event) {
       var form = event.target;
-      if (!form || !form.classList || !form.classList.contains("cart")) return;
+      if (!form || !form.classList) return;
+      var message = null;
+      if (form.classList.contains("cart")) {
+        message = "Static archive — the cart is disabled, so this form does not submit.";
+      } else if (form.classList.contains("wpcf7-form") || form.classList.contains("um-form")) {
+        // Contact and account forms post to wp-json / admin-ajax; neither
+        // exists on a static host. Say so instead of clearing the fields.
+        message = "Static archive — this form cannot send. Email mahinahmed923@gmail.com instead.";
+      }
+      if (!message) return;
       event.preventDefault();
       event.stopPropagation();
-      announce("Static archive — the cart is disabled, so this form does not submit.");
+      announce(message);
     },
     true
   );
