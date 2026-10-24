@@ -140,6 +140,7 @@ const OG_IMAGE = /(<meta\s+(?:property|name)=["'](?:og:image|twitter:image)["']\
 
 let socialized = 0;
 let canonicals = 0;
+let defaults = 0;
 for (const file of walk(ROOT)) {
   if (!file.endsWith(".html")) continue;
   const dir = path.dirname(file);
@@ -172,6 +173,19 @@ for (const file of walk(ROOT)) {
     const tags = `<link rel="canonical" href="${url}">\n<meta property="og:url" content="${url}">\n`;
     html = html.replace(/<\/head>/i, (m) => tags + m);
     canonicals++;
+  }
+
+  // Most pages name no image, so a shared link arrives as a bare text card.
+  // Fall back to the hub's capture of that storefront's homepage.
+  if (!html.includes('property="og:image"')) {
+    const slug = path.relative(ROOT, siteRoot).split(path.sep).join("/");
+    const shot = `${PUBLIC}/shots/${slug}.jpg`;
+    const tags =
+      `<meta property="og:image" content="${shot}">\n` +
+      `<meta name="twitter:image" content="${shot}">\n` +
+      `<meta name="twitter:card" content="summary_large_image">\n`;
+    html = html.replace(/<\/head>/i, (m) => tags + m);
+    defaults++;
   }
 
   if (html !== before) fs.writeFileSync(file, html);
@@ -236,6 +250,6 @@ if (BASE) {
 }
 
 function report() {
-  console.log(JSON.stringify({ dir: ROOT, renamed, strippedLinks: stripped, relativeFlags, socialized, canonicals, missingAssets: missing.size, healed }, null, 2));
+  console.log(JSON.stringify({ dir: ROOT, renamed, strippedLinks: stripped, relativeFlags, socialized, canonicals, defaults, missingAssets: missing.size, healed }, null, 2));
   if (missing.size) for (const rel of missing.keys()) console.log("  missing " + rel);
 }
