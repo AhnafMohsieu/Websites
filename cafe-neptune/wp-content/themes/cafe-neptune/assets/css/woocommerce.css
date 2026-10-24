@@ -1,0 +1,215 @@
+/* Cafe Neptune - WooCommerce Styles */
+
+/* Full-Width Overrides (override WooCommerce core 1200px max-width) */
+.woocommerce,
+.woocommerce-page {
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+.woocommerce #content,
+.woocommerce-page #content,
+.woocommerce #primary,
+.woocommerce-page #primary,
+.woocommerce div.product,
+.woocommerce ul.products {
+    max-width: 100% !important;
+    width: 100% !important;
+}
+.woocommerce .col-left,
+.woocommerce .col2-set,
+.woocommerce-page .col2-set {
+    max-width: 100% !important;
+    float: none !important;
+}
+
+/* Product Title */
+.single-product div.product .product_title {
+    font-weight: 900 !important;
+    font-size: 2.5rem !important;
+    letter-spacing: -1px;
+    color: var(--text-primary);
+    margin-bottom: 15px;
+}
+
+/* Product Price */
+.single-product div.product p.price,
+.single-product div.product span.price {
+    font-size: 1.3rem !important;
+    font-weight: 800 !important;
+    color: var(--accent-primary) !important;
+    margin-bottom: 25px;
+}
+.single-product div.product p.price del,
+.single-product div.product span.price del {
+    color: #94a3b8 !important;
+    font-weight: 500 !important;
+    font-size: 1rem !important;
+    margin-right: 10px;
+}
+
+/* Add to Cart Button */
+.single-product div.product form.cart .button {
+    background: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 100%) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: var(--radius-full) !important;
+    padding: 16px 40px !important;
+    font-size: 1.1rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 10px 25px rgba(14, 165, 233, 0.4) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.single-product div.product form.cart .button:hover {
+    transform: translateY(-3px) scale(1.02) !important;
+    box-shadow: 0 15px 35px rgba(14, 165, 233, 0.6) !important;
+}
+
+/* Quantity Selector */
+.single-product div.product form.cart div.quantity {
+    display: inline-flex !important;
+    align-items: center;
+    background: var(--bg-card);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-full);
+    padding: 2px 15px;
+    margin-right: 20px !important;
+    height: 54px;
+}
+.single-product div.product form.cart div.quantity input.qty {
+    width: 60px !important;
+    border: none !important;
+    background: transparent !important;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    padding: 0 !important;
+    height: 100% !important;
+    -moz-appearance: textfield;
+}
+.single-product div.product form.cart div.quantity input::-webkit-outer-spin-button,
+.single-product div.product form.cart div.quantity input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Sale Badge */
+span.onsale {
+    background: linear-gradient(135deg, #ef4444 0%, #f43f5e 100%) !important;
+    color: white !important;
+    font-weight: 800 !important;
+    padding: 8px 20px !important;
+    border-radius: 30px !important;
+    font-size: 0.9rem !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 8px 20px rgba(239, 68, 68, 0.4) !important;
+    min-height: auto !important;
+    min-width: auto !important;
+    line-height: 1 !important;
+    top: 20px !important;
+    left: 20px !important;
+}
+
+/* Variation Selectors */
+.variations select {
+    appearance: none;
+    background: var(--bg-card) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%233b82f6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") no-repeat right 15px center;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    padding: 12px 45px 12px 20px;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text-primary);
+    width: 100%;
+    max-width: 300px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+.variations select:hover, .variations select:focus {
+    border-color: var(--accent-primary);
+    outline: none;
+}
+
+.tawcvs-swatches .swatch,
+.variable-items-wrapper .variable-item,
+table.variations td.value label {
+    border-radius: 8px !important;
+    border: 2px solid var(--border-color) !important;
+    box-shadow: none !important;
+    font-weight: 700 !important;
+    transition: all 0.2s ease !important;
+    background: var(--bg-card) !important;
+    padding: 8px 16px !important;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 8px;
+    color: var(--text-secondary);
+}
+.tawcvs-swatches .swatch:hover,
+.variable-items-wrapper .variable-item:hover,
+table.variations td.value label:hover {
+    border-color: var(--accent-primary) !important;
+    transform: translateY(-2px);
+    color: var(--text-primary);
+}
+.tawcvs-swatches .swatch.selected,
+.variable-items-wrapper .variable-item.selected,
+table.variations td.value input[type="radio"]:checked + label {
+    border-color: var(--accent-primary) !important;
+    background: var(--accent-primary) !important;
+    color: white !important;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4) !important;
+}
+
+/* Product Meta */
+.product_meta {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 30px !important;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    clear: both;
+}
+
+.product_meta .sku_wrapper,
+.product_meta .posted_in,
+.product_meta .tagged_as {
+    display: block !important;
+    font-weight: 500;
+}
+
+.product_meta a {
+    color: var(--text-primary) !important;
+    font-weight: 600;
+    margin-left: 5px;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.product_meta a:hover {
+    color: var(--accent-primary) !important;
+}
+
+/* Add to Wishlist Link */
+.yith-wcwl-add-to-wishlist {
+    margin-top: 25px !important;
+}
+.yith-wcwl-add-to-wishlist a {
+    color: var(--text-secondary) !important;
+    font-weight: 600 !important;
+    font-size: 1rem;
+    transition: var(--transition) !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.yith-wcwl-add-to-wishlist a:hover {
+    color: #ef4444 !important;
+}
