@@ -25,6 +25,33 @@
 
   var note = document.getElementById("mirror-note");
 
+  /*
+   * A few plugin scripts rebuild asset URLs against the domain root after the
+   * page loads (the language switcher is one). This capture is served from a
+   * subfolder, so those requests 404 against the user's site root. Map them
+   * back into the archive: /wp-content/x -> /Websites/<site>/wp-content/x.
+   */
+  var script = document.querySelector('script[src$="archive-note.js"]');
+  var repoPath = script ? new URL(script.src, location.href).pathname.replace(/archive-note\.js$/, "") : null;
+  var siteRoot = null;
+  if (repoPath && location.pathname.indexOf(repoPath) === 0) {
+    var slug = location.pathname.slice(repoPath.length).split("/")[0];
+    if (slug) siteRoot = repoPath + slug + "/";
+  }
+
+  function sweep() {
+    if (!siteRoot) return;
+    var attrs = ["src", "href", "data-src", "poster"];
+    document.querySelectorAll('[src^="/"], [href^="/"], [data-src^="/"], [poster^="/"]').forEach(function (el) {
+      attrs.forEach(function (attr) {
+        var value = el.getAttribute(attr);
+        if (!value || value.charAt(0) !== "/" || value.indexOf("//") === 0) return;
+        if (value.indexOf(repoPath) === 0) return;
+        el.setAttribute(attr, siteRoot + value.slice(1));
+      });
+    });
+  }
+
   function dismiss() {
     try {
       localStorage.setItem(STORE_KEY, "1");
@@ -97,5 +124,11 @@
         el.classList.remove("loading");
       });
     }, 1200);
+  });
+
+  // Plugin scripts run at their own pace, so sweep a few times after load.
+  sweep();
+  [400, 1200, 2500].forEach(function (delay) {
+    setTimeout(sweep, delay);
   });
 })();
