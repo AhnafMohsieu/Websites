@@ -37,8 +37,13 @@ Two small scripts make the captures behave on a static host:
   removes two failed requests per page and stops the wishlist script from
   throwing on a response it never got.
 - `archive-note.js` loads at the end of `<body>`: it guards cart, checkout,
-  wishlist, contact and account forms, rebases any root-relative asset URL a
-  plugin injects after load, and keeps the banner dismissal in `localStorage`.
+  wishlist, search, comment, contact and account forms, rebases any
+  root-relative asset URL a plugin injects after load, and keeps the banner
+  dismissal in `localStorage`.
+
+Both script tags carry a `?v=` stamp written by `tools/inject-note.js`. Bump `V`
+there when either script changes, or a returning visitor keeps running the copy
+their browser cached.
 
 ## Rebuilding an archive
 

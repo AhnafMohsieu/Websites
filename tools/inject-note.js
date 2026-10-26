@@ -14,6 +14,10 @@ const arg = (n, d) => {
 const DIR = path.resolve(arg("dir"));
 const ROOT = path.resolve(arg("root"));
 
+// Bump when archive-boot.js or archive-note.js changes, so a returning visitor
+// does not keep running the copy their browser cached.
+const V = "2";
+
 const walk = function* (dir) {
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
     const f = path.join(dir, e.name);
@@ -45,11 +49,15 @@ for (const file of walk(DIR)) {
   if (!html.includes("archive-boot.js")) {
     // Synchronous, in <head>: the cart/wishlist poll fires while the page is
     // still parsing, so a deferred script at the end of <body> is too late.
-    html = html.replace(/<\/head>/, `<script src="${prefix}archive-boot.js"></script>\n</head>`);
+    html = html.replace(/<\/head>/, `<script src="${prefix}archive-boot.js?v=${V}"></script>\n</head>`);
   }
-  if (!html.includes('archive-note.js"')) {
-    html = html.replace(/<\/body>/, `<script src="${prefix}archive-note.js" defer></script>\n</body>`);
+  if (!html.includes('archive-note.js')) {
+    html = html.replace(/<\/body>/, `<script src="${prefix}archive-note.js?v=${V}" defer></script>\n</body>`);
   }
+
+  // Re-point an older tag at the current version.
+  html = html.replace(/(archive-(?:boot|note)\.js)\?v=[^"']*(?=["'])/g, (m, name) => `${name}?v=${V}`);
+  html = html.replace(/(archive-(?:boot|note)\.js)(?=["'])/g, (m, name) => `${name}?v=${V}`);
 
   if (html !== original) {
     fs.writeFileSync(file, html);
