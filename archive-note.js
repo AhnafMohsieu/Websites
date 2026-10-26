@@ -154,15 +154,23 @@
     function (event) {
       var form = event.target;
       if (!form || !form.classList) return;
-      var message = null;
+
+      // Nothing on a static host can process a form: every one of them ends in
+      // a PHP file or an admin endpoint. Block them all, and name the ones a
+      // visitor is most likely to try.
+      var message = "Static archive — this form needs the WordPress server, so it cannot submit.";
       if (form.classList.contains("cart")) {
         message = "Static archive — the cart is disabled, so this form does not submit.";
+      } else if (form.matches('[role="search"], .search-form, .woocommerce-product-search')) {
+        // Left alone, search reloads the same page with ?s= in the URL and no
+        // results, which reads as a broken site.
+        message = "Static archive — search needs the WordPress server. Browse by shop or category instead.";
       } else if (form.classList.contains("wpcf7-form") || form.classList.contains("um-form")) {
-        // Contact and account forms post to wp-json / admin-ajax; neither
-        // exists on a static host. Say so instead of clearing the fields.
         message = "Static archive — this form cannot send. Email mahinahmed923@gmail.com instead.";
+      } else if (form.id === "commentform" || /wp-comments-post/.test(form.getAttribute("action") || "")) {
+        message = "Static archive — comments cannot be posted here.";
       }
-      if (!message) return;
+
       event.preventDefault();
       event.stopPropagation();
       announce(message);
