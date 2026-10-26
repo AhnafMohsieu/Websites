@@ -18,6 +18,7 @@
     <p class="eyebrow">404</p>
     <h1>That page is not in the archive</h1>
     <p class="lede">These are static captures of three WordPress shops. A few dynamic links — filtered pagination, account actions, search results — were never captured because they only exist when PHP is running.</p>
+    <p class="lede" id="nearest" hidden style="margin-top:14px"></p>
     <div class="actions" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px">
       <a class="btn btn--solid" href="/Websites/">Back to the case studies</a>
       <a class="btn" href="/Websites/nori/">NoriBD</a>
@@ -26,5 +27,24 @@
     </div>
   </section>
 </main>
+<script>
+// If the visitor was inside one of the archives, offer that site's homepage
+// instead of asking them to pick a shop from scratch.
+(function () {
+  var names = { nori: "NoriBD", bangubhozon: "Bangu Bhozon", "cafe-neptune": "Cafe Neptune" };
+  var m = location.pathname.match(/\/(nori|bangubhozon|cafe-neptune)(?:\/|$)/);
+  if (!m) return;
+  var slug = m[1];
+  var base = location.pathname.slice(0, m.index + 1);
+  var line = document.getElementById("nearest");
+  line.textContent = "You were heading into " + names[slug] + ". ";
+  var link = document.createElement("a");
+  link.href = base + slug + "/";
+  link.textContent = "Start again at its homepage";
+  line.appendChild(link);
+  line.appendChild(document.createTextNode("."));
+  line.hidden = false;
+})();
+</script>
 </body>
 </html>

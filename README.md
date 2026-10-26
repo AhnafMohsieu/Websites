@@ -27,7 +27,8 @@ that ordering is disabled, and a script that intercepts cart and wishlist clicks
 so they explain themselves instead of navigating to a dead endpoint. Pages that
 only exist behind PHP (filtered pagination, account actions, `wp-json`, XML-RPC
 and RSS feeds) are not captured, and their links are removed rather than left
-dangling; anything else that misses lands on `404.html`.
+dangling; anything else that misses lands on `404.html`, which works out which
+archive you were in and offers that shop's homepage.
 
 Two small scripts make the captures behave on a static host:
 
