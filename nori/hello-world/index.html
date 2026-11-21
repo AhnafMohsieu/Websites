@@ -860,6 +860,19 @@ Commenter avatars come from <a href="https://gravatar.com/">Gravatar</a>.</p>
             align-items: center !important;
         }
 
+        
+        /* Fix price currency wrapping and alignment */
+        .woocommerce-Price-amount,
+        .price .amount {
+            white-space: nowrap !important;
+            display: inline-block !important;
+        }
+        ul.products li.product .price {
+            flex-wrap: nowrap !important;
+            white-space: nowrap !important;
+            gap: 4px !important;
+        }
+
         ul.products li.product .price {
             text-align: center !important;
             display: flex !important;
