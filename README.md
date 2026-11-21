@@ -11,6 +11,19 @@ static capture of the running install:
 
 The landing page is https://ahnafmohsieu.github.io/Websites/.
 
+<p align="center">
+  <a href="https://ahnafmohsieu.github.io/Websites/">
+    <img src="docs/screenshots/desktop.png" alt="Hub page linking the three archived WordPress storefronts" width="100%">
+  </a>
+</p>
+
+<details>
+  <summary>Mobile view</summary>
+  <p align="center">
+    <img src="docs/screenshots/mobile.png" alt="Websites hub on mobile" width="320">
+  </p>
+</details>
+
 ## What the archives are
 
 Each folder is a crawl of the original WordPress site running locally against
@@ -146,3 +159,9 @@ database, theme, plugins, and media — onto any PHP host.
 holds the hub thumbnails — desktop and mobile renditions of each homepage,
 captured from the archives themselves. No build step. Served from `main` /
 `/ (root)` by GitHub Pages.
+
+
+## License
+
+All rights reserved. See [LICENSE](LICENSE). The code and content are published
+for viewing and evaluation only.
