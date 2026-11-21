@@ -149,6 +149,510 @@ var wc_add_to_cart_variation_params = {"wc_ajax_url":"/?wc-ajax=%%endpoint%%","i
 <meta property="og:image" content="https://ahnafmohsieu.github.io/Websites/shots/nori.jpg">
 <meta name="twitter:image" content="https://ahnafmohsieu.github.io/Websites/shots/nori.jpg">
 <meta name="twitter:card" content="summary_large_image">
+
+    <style id="nori-enhanced-styles">
+        /* Enhanced Typography & Spacing */
+        .nori-hero-section {
+            padding: 40px 20px 30px;
+            max-width: 1200px;
+            margin: 0 auto 30px;
+            text-align: center;
+        }
+        .nori-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(19, 70, 175, 0.1);
+            color: #1346af;
+            border: 1px solid rgba(19, 70, 175, 0.25);
+            padding: 6px 16px;
+            border-radius: 999px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+        .nori-hero-title {
+            font-size: clamp(2rem, 4vw, 3.2rem) !important;
+            font-weight: 800 !important;
+            color: #0f172a !important;
+            line-height: 1.15 !important;
+            margin-bottom: 16px !important;
+            letter-spacing: -0.5px;
+        }
+        .nori-hero-sub {
+            font-size: 1.05rem;
+            color: #334155;
+            max-width: 720px;
+            margin: 0 auto 24px;
+            line-height: 1.6;
+        }
+        .nori-hero-actions {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        .nori-btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #1346af !important;
+            color: #ffffff !important;
+            padding: 12px 28px !important;
+            border-radius: 999px !important;
+            font-weight: 700 !important;
+            text-decoration: none !important;
+            box-shadow: 0 4px 14px rgba(19, 70, 175, 0.3) !important;
+            transition: transform 0.2s, box-shadow 0.2s !important;
+        }
+        .nori-btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(19, 70, 175, 0.4) !important;
+        }
+        .nori-btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.9) !important;
+            color: #0f172a !important;
+            border: 1px solid rgba(0, 0, 0, 0.12) !important;
+            padding: 12px 26px !important;
+            border-radius: 999px !important;
+            font-weight: 600 !important;
+            text-decoration: none !important;
+            transition: all 0.2s !important;
+        }
+        .nori-btn-secondary:hover {
+            background: #ffffff !important;
+            border-color: #1346af !important;
+            color: #1346af !important;
+        }
+        .nori-hero-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .nori-hero-feature-item {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            padding: 14px 18px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #1e293b;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Categories Section */
+        .nori-section-container {
+            max-width: 1200px;
+            margin: 0 auto 50px;
+            padding: 0 20px;
+        }
+        .nori-section-header {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+        .nori-section-header h2 {
+            font-size: 1.8rem !important;
+            font-weight: 800 !important;
+            color: #0f172a !important;
+            margin-bottom: 6px !important;
+        }
+        .nori-section-header p {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+        .nori-categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+            gap: 18px;
+        }
+        .nori-cat-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 18px;
+            padding: 22px 16px;
+            text-align: center;
+            text-decoration: none !important;
+            color: #0f172a !important;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+            transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .nori-cat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(19, 70, 175, 0.15);
+            border-color: #93c5fd;
+        }
+        .nori-cat-icon {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+        .nori-cat-name {
+            font-size: 0.98rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 4px;
+        }
+        .nori-cat-count {
+            font-size: 0.78rem;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        /* Home Bottom Items - Value Strip */
+        .nori-value-strip {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 50px auto 40px;
+            padding: 0 20px;
+        }
+        .nori-value-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 18px;
+            padding: 24px 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s;
+        }
+        .nori-value-card:hover {
+            transform: translateY(-3px);
+        }
+        .nori-value-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+        .nori-value-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 8px;
+        }
+        .nori-value-desc {
+            font-size: 0.88rem;
+            color: #475569;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Rich Footer Styling */
+        .nori-rich-footer {
+            background: #0f172a !important;
+            color: #cbd5e1 !important;
+            margin-top: 60px !important;
+            padding: 50px 0 20px !important;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .nori-footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .nori-footer-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1.2fr 1.4fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        @media (max-width: 900px) {
+            .nori-footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+        }
+        @media (max-width: 580px) {
+            .nori-footer-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+        }
+        .nori-footer-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+        .nori-fish-icon {
+            width: 32px;
+            height: 32px;
+            display: inline-block;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Ik02LjUgMTJjLjk0LTMuNDYgNC45NC02IDguNS02IDEuMTYgMCAyLjYuNDIgMy41IDEuMDcgMS4yMi44OCAyLjUgMi4xIDIuNSA0LjkzIDAgMi44My0xLjI4IDQuMDUtMi41IDQuOTMtMS40MiAxLjAyLTMuMDMgMS4wNy00IDEuMDctNC4wNCAwLTcuODUtMi45Mi04LTYuNXoiLz48cGF0aCBkPSJNMiAxNnMzLTEuNSA1LTZjLTItNC41LTUtNi01LTZ2MTJ6Ii8+PC9zdmc+');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        .nori-brand-text {
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 300;
+            letter-spacing: 6px;
+            font-family: 'Helvetica Neue', 'Inter', Arial, sans-serif;
+        }
+        .nori-footer-desc {
+            font-size: 0.88rem;
+            color: #94a3b8;
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+        .nori-social-links {
+            display: flex;
+            gap: 12px;
+        }
+        .nori-social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            color: #ffffff !important;
+            transition: all 0.2s;
+        }
+        .nori-social-links a:hover {
+            background: #1346af;
+            transform: translateY(-2px);
+        }
+        .nori-footer-heading {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 18px;
+            letter-spacing: 0.3px;
+        }
+        .nori-footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .nori-footer-links li {
+            margin-bottom: 10px;
+        }
+        .nori-footer-links a {
+            color: #94a3b8 !important;
+            text-decoration: none !important;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        .nori-footer-links a:hover {
+            color: #60a5fa !important;
+            padding-left: 4px;
+        }
+        .nori-footer-contact {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .nori-footer-contact li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 12px;
+            font-size: 0.88rem;
+            color: #94a3b8;
+            line-height: 1.4;
+        }
+        .nori-footer-contact svg {
+            flex-shrink: 0;
+            margin-top: 2px;
+            color: #60a5fa;
+        }
+        .nori-footer-bottom {
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .nori-footer-copy {
+            font-size: 0.84rem;
+            color: #64748b;
+        }
+        .nori-footer-payments {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .nori-payment-label {
+            font-size: 0.78rem;
+            color: #94a3b8;
+            margin-right: 4px;
+        }
+        .nori-pay-img {
+            width: 42px;
+            height: 26px;
+            object-fit: contain;
+            background: #ffffff;
+            border-radius: 4px;
+            padding: 2px 4px;
+        }
+        .nori-pay-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        /* Mobile Sticky Navigation Dock */
+        .nori-mobile-dock {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .nori-mobile-dock {
+                display: flex;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 58px;
+                background: rgba(255, 255, 255, 0.94);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border-top: 1px solid rgba(0, 0, 0, 0.08);
+                box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.06);
+                z-index: 99999;
+                justify-content: space-around;
+                align-items: center;
+                padding-bottom: env(safe-area-inset-bottom);
+            }
+            .nori-dock-item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                color: #64748b !important;
+                text-decoration: none !important;
+                font-size: 0.7rem;
+                font-weight: 600;
+                gap: 2px;
+                flex: 1;
+                height: 100%;
+                transition: color 0.2s;
+            }
+            .nori-dock-item:hover,
+            .nori-dock-item:active {
+                color: #1346af !important;
+            }
+            body {
+                padding-bottom: 60px !important;
+            }
+        }
+
+        /* Custom Page Styling (About, Contact, Track, Category) */
+        .nori-page-hero {
+            text-align: center;
+            padding: 40px 20px 24px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .nori-page-hero h1 {
+            font-size: clamp(2rem, 3.5vw, 2.8rem) !important;
+            font-weight: 800 !important;
+            color: #0f172a !important;
+            margin-bottom: 12px !important;
+        }
+        .nori-page-hero p {
+            font-size: 1.05rem;
+            color: #475569;
+            line-height: 1.6;
+        }
+        .nori-card-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 36px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+            margin-bottom: 30px;
+        }
+        .nori-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        @media (max-width: 768px) {
+            .nori-grid-2 {
+                grid-template-columns: 1fr;
+            }
+            .nori-card-panel {
+                padding: 24px 18px;
+            }
+        }
+        .nori-contact-item {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            margin-bottom: 24px;
+        }
+        .nori-contact-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: #eff6ff;
+            color: #1346af;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .nori-contact-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 4px;
+        }
+        .nori-contact-desc {
+            font-size: 0.92rem;
+            color: #475569;
+            line-height: 1.5;
+            margin: 0;
+        }
+        .nori-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+            background: #ffffff;
+            color: #0f172a;
+            box-sizing: border-box;
+        }
+        .nori-input:focus {
+            border-color: #1346af;
+            outline: 2px solid rgba(19, 70, 175, 0.2);
+        }
+        .nori-label {
+            display: block;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 6px;
+        }
+    </style>
+
 </head>
 
 	<body class="archive post-type-archive post-type-archive-product wp-custom-logo wp-embed-responsive wp-theme-woostify theme-woostify woocommerce-shop woocommerce woocommerce-page woocommerce-no-js woo-variation-swatches wvs-behavior-blur wvs-theme-woostify wvs-show-label wvs-tooltip tinvwl-theme-style site-normal-container has-header-layout-1 right-sidebar has-sidebar default-sidebar has-gallery-slider-layout ajax-single-add-to-cart elementor-default elementor-kit-10">
@@ -366,7 +870,86 @@ var wc_add_to_cart_variation_params = {"wc_ajax_url":"/?wc-ajax=%%endpoint%%","i
 		</header>
 				<div id="view">
 				<div id="content" class="site-content" tabindex="-1">
-		<div class="woostify-container">		<div id="primary" class="content-area">
+		<div class="woostify-container">		
+    <!-- HERO SECTION -->
+    <div class="nori-hero-section">
+        <div class="nori-hero-badge">Ocean-To-Table &#8226; Air-Flown Weekly &#8226; Sashimi Certified</div>
+        <h1 class="nori-hero-title">Ocean-Fresh Seafood &amp; Authentic Japanese Delicacies</h1>
+        <p class="nori-hero-sub">
+            Sashimi-grade bluefin tuna, Hokkaido fresh salmon, live oysters, scallops, and artisanal nori air-flown weekly and delivered in temperature-controlled insulated boxes across Dhaka.
+        </p>
+        <div class="nori-hero-actions">
+            <a href="#products" class="nori-btn-primary">
+                Browse Full Catalog
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <a href="#categories" class="nori-btn-secondary">
+                Explore Categories
+            </a>
+        </div>
+        <div class="nori-hero-features">
+            <div class="nori-hero-feature-item">
+                <span style="font-size: 1.4rem;">&#10052;&#65039;</span>
+                <span>Sub-Zero Cold Chain</span>
+            </div>
+            <div class="nori-hero-feature-item">
+                <span style="font-size: 1.4rem;">&#9992;&#65039;</span>
+                <span>Air-Flown Weekly</span>
+            </div>
+            <div class="nori-hero-feature-item">
+                <span style="font-size: 1.4rem;">&#127843;</span>
+                <span>100% Sashimi Grade</span>
+            </div>
+            <div class="nori-hero-feature-item">
+                <span style="font-size: 1.4rem;">&#128179;</span>
+                <span>bKash, Nagad &amp; COD</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- CATEGORIES SHOWCASE SECTION -->
+    <div class="nori-section-container" id="categories">
+        <div class="nori-section-header">
+            <h2>Shop By Category</h2>
+            <p>Select a category to browse our specialized selections</p>
+        </div>
+        <div class="nori-categories-grid">
+            <a href="product-category/fresh-frozen-fish/" class="nori-cat-card">
+                <span class="nori-cat-icon">&#128031;</span>
+                <span class="nori-cat-name">Fresh &amp; Frozen Fish</span>
+                <span class="nori-cat-count">4 Products</span>
+            </a>
+            <a href="product-category/cephalopods/" class="nori-cat-card">
+                <span class="nori-cat-icon">&#128025;</span>
+                <span class="nori-cat-name">Cephalopods</span>
+                <span class="nori-cat-count">2 Products</span>
+            </a>
+            <a href="product-category/shellfish-crustaceans/" class="nori-cat-card">
+                <span class="nori-cat-icon">&#129408;</span>
+                <span class="nori-cat-name">Shellfish &amp; Crab</span>
+                <span class="nori-cat-count">4 Products</span>
+            </a>
+            <a href="product-category/fish-roe-caviar/" class="nori-cat-card">
+                <span class="nori-cat-icon">&#127857;</span>
+                <span class="nori-cat-name">Fish Roe &amp; Ikura</span>
+                <span class="nori-cat-count">3 Products</span>
+            </a>
+            <a href="product-category/seaweed-marine-vegetables/" class="nori-cat-card">
+                <span class="nori-cat-icon">&#127807;</span>
+                <span class="nori-cat-name">Seaweed &amp; Kombu</span>
+                <span class="nori-cat-count">3 Products</span>
+            </a>
+            <a href="product-category/dried-processed-seafood/" class="nori-cat-card">
+                <span class="nori-cat-icon">&#129378;</span>
+                <span class="nori-cat-name">Japanese Pantry</span>
+                <span class="nori-cat-count">6 Products</span>
+            </a>
+        </div>
+    </div>
+
+    <div id="products"></div>
+    
+<div id="primary" class="content-area">
 			<main id="main" class="site-main">
 			<header class="woocommerce-products-header">
 	
@@ -1355,6 +1938,31 @@ var wc_add_to_cart_variation_params = {"wc_ajax_url":"/?wc-ajax=%%endpoint%%","i
 </ul>
 </nav>
 			</main><!-- #main -->
+
+    <!-- HOME BOTTOM ITEMS: GUARANTEES & SERVICE -->
+    <div class="nori-value-strip">
+        <div class="nori-value-card">
+            <div class="nori-value-icon">&#129370;</div>
+            <div class="nori-value-title">Sub-Zero Cold Chain</div>
+            <p class="nori-value-desc">Every cut is vacuum sealed and delivered in insulated thermal packaging with dry ice to preserve peak sashimi freshness across Dhaka.</p>
+        </div>
+        <div class="nori-value-card">
+            <div class="nori-value-icon">&#127843;</div>
+            <div class="nori-value-title">Certified Sashimi Grade</div>
+            <p class="nori-value-desc">Guaranteed sushi and sashimi-grade quality. Hand-selected from certified ocean fisheries and audited under stringent hygiene protocols.</p>
+        </div>
+        <div class="nori-value-card">
+            <div class="nori-value-icon">&#128241;</div>
+            <div class="nori-value-title">Bangladeshi Payments</div>
+            <p class="nori-value-desc">Pay instantly using bKash, Nagad, debit/credit cards, or inspect your perishable seafood and pay cash on delivery.</p>
+        </div>
+        <div class="nori-value-card">
+            <div class="nori-value-icon">&#128172;</div>
+            <div class="nori-value-title">Direct WhatsApp Support</div>
+            <p class="nori-value-desc">Need a custom cut, whole fish dressing, or party platter? Our Banani concierge team is on WhatsApp 7 days a week.</p>
+        </div>
+    </div>
+    
 		</div><!-- #primary -->
 
 		<div id="secondary" class="widget-area shop-widget" role="complementary">
@@ -1378,18 +1986,118 @@ var wc_add_to_cart_variation_params = {"wc_ajax_url":"/?wc-ajax=%%endpoint%%","i
 
 </div></div>
 </div>		</div>
-				<footer id="colophon" class="site-footer">
-			<div class="woostify-container">
-
 				
-		<div class="site-info">
-							<div class="site-infor-col">
-					Copyright &copy; 2026 <span class="woostify-site-title">Nori</span> | Powered by <a href="https://woostify.com/">Woostify</a>				</div>
-			
-					</div>
-		
-			</div>
-		</footer>
+    <!-- NoriBD Rich Multi-Column Footer & Bottom Items -->
+    <footer id="colophon" class="site-footer nori-rich-footer">
+        <div class="nori-footer-container">
+            <div class="nori-footer-grid">
+                <!-- Brand Info Column -->
+                <div class="nori-footer-col nori-footer-brand">
+                    <div class="nori-footer-logo">
+                        <span class="nori-fish-icon"></span>
+                        <span class="nori-brand-text">NORI</span>
+                    </div>
+                    <p class="nori-footer-desc">
+                        Dhaka's premier purveyor of authentic Japanese sashimi-grade seafood and marine delicacies. Air-flown, vacuum-sealed, and temperature-controlled for restaurant-grade freshness.
+                    </p>
+                    <div class="nori-social-links">
+                        <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+                        <a href="https://wa.me/8801700000000" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
+                    </div>
+                </div>
+
+                <!-- Quick Navigation Tabs -->
+                <div class="nori-footer-col">
+                    <h4 class="nori-footer-heading">Navigation</h4>
+                    <ul class="nori-footer-links">
+                        <li><a href="">Home</a></li>
+                        <li><a href="shop/">Store Catalog</a></li>
+                        <li><a href="about-us/">About Our Fish</a></li>
+                        <li><a href="contact-us/">Contact &amp; Hub</a></li>
+                        <li><a href="track-order/">Track Order</a></li>
+                        <li><a href="wishlist/">Saved Wishlist</a></li>
+                    </ul>
+                </div>
+
+                <!-- Top Categories -->
+                <div class="nori-footer-col">
+                    <h4 class="nori-footer-heading">Categories</h4>
+                    <ul class="nori-footer-links">
+                        <li><a href="product-category/fresh-frozen-fish/">Fresh &amp; Frozen Fish</a></li>
+                        <li><a href="product-category/cephalopods/">Cephalopods (Squid &amp; Tako)</a></li>
+                        <li><a href="product-category/shellfish-crustaceans/">Shellfish &amp; Crustaceans</a></li>
+                        <li><a href="product-category/fish-roe-caviar/">Fish Roe &amp; Caviar</a></li>
+                        <li><a href="product-category/seaweed-marine-vegetables/">Seaweed &amp; Kombu</a></li>
+                        <li><a href="product-category/dried-processed-seafood/">Japanese Pantry &amp; Dashi</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact & Distribution Hub -->
+                <div class="nori-footer-col">
+                    <h4 class="nori-footer-heading">Dhaka Hub &amp; Delivery</h4>
+                    <ul class="nori-footer-contact">
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <span>House 14, Road 11, Block D, Banani, Dhaka-1213</span>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            <span>+880 1724-486662 (WhatsApp &amp; Orders)</span>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            <span>support@noribd.com</span>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            <span>9:00 AM &ndash; 10:00 PM (Daily Dispatch)</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Footer Bottom Bar -->
+            <div class="nori-footer-bottom">
+                <div class="nori-footer-copy">
+                    &copy; 2026 NoriBD Ltd. All Rights Reserved. Air-flown Japanese Seafood &amp; Pantry Distribution.
+                </div>
+                <div class="nori-footer-payments">
+                    <span class="nori-payment-label">Accepted Payments:</span>
+                    <img src="wp-content/plugins/bangladeshi-payment-gateways/assets/images/Bkash.png" alt="bKash" class="nori-pay-img">
+                    <img src="wp-content/plugins/bangladeshi-payment-gateways/assets/images/Nagad.png" alt="Nagad" class="nori-pay-img">
+                    <img src="wp-content/plugins/bangladeshi-payment-gateways/assets/images/Rocket.png" alt="Rocket" class="nori-pay-img">
+                    <span class="nori-pay-badge">COD</span>
+                    <span class="nori-pay-badge">Cards</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Sticky Quick Dock -->
+    <nav class="nori-mobile-dock" aria-label="Mobile Navigation Dock">
+        <a href="" class="nori-dock-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span>Home</span>
+        </a>
+        <a href="shop/" class="nori-dock-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            <span>Shop</span>
+        </a>
+        <a href="#categories" class="nori-dock-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            <span>Categories</span>
+        </a>
+        <a href="wishlist/" class="nori-dock-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            <span>Wishlist</span>
+        </a>
+        <a href="contact-us/" class="nori-dock-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            <span>Contact</span>
+        </a>
+    </nav>
+    
 				</div>
 		<div class="sidebar-menu ">
 		<div class="site-search ">
