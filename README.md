@@ -1,5 +1,9 @@
 # Websites
 
+[![Live site](https://img.shields.io/badge/live-view-0e5a6b?style=flat-square)](https://ahnafmohsieu.github.io/Websites/) [![License](https://img.shields.io/badge/license-all%20rights%20reserved-lightgrey?style=flat-square)](LICENSE)
+
+> ← [All projects](https://ahnafmohsieu.github.io/Portfolio/hub/)
+
 Three WordPress storefronts built for Bangladeshi retail, each browsable as a
 static capture of the running install:
 
