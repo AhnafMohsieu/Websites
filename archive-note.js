@@ -166,7 +166,7 @@
         // results, which reads as a broken site.
         message = "Static archive — search needs the WordPress server. Browse by shop or category instead.";
       } else if (form.classList.contains("wpcf7-form") || form.classList.contains("um-form")) {
-        message = "Static archive — this form cannot send. Email hello@example.com instead.";
+        message = "Static archive — this form cannot send. Open an issue on the repository instead.";
       } else if (form.id === "commentform" || /wp-comments-post/.test(form.getAttribute("action") || "")) {
         message = "Static archive — comments cannot be posted here.";
       }
