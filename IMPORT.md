@@ -2,7 +2,7 @@
 
 Each build exists as a single All-in-One WP Migration archive (`.wpress`). The
 archives are 350–530 MB and are therefore **not** committed here: GitHub rejects
-files above 100 MB. Request the archive by opening an issue on this repository.
+files above 100 MB. Request the archive from hello@example.com.
 
 A `.wpress` file is not a website and cannot be opened in a browser. It contains
 a database dump plus `wp-content` (theme, plugins, uploads) in that plugin's own
